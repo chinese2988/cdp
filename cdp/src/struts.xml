@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+
+	<package name="default" namespace="/" extends="struts-default" >
+  	    <interceptors>
+			<interceptor name="checkLoginInterceptor" class="interceptor.CheckLoginInterceptor"/>
+			<interceptor-stack name="checkLoginStack">
+				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="checkLoginInterceptor"/>
+			</interceptor-stack>
+		
+		</interceptors> 
+		
+		<global-results>
+			<result name="login">
+				/WEB-INF/jsp/login.jsp
+			</result>
+			<result name="error">
+				/WEB-INF/common/error.jsp
+			</result>
+			<result name="success">
+				/WEB-INF/common/success.jsp
+			</result>
+			
+			<result name="main">
+				/WEB-INF/common/main.jsp
+			</result>
+		</global-results>
+		
+		<!--系统功能-->
+			<!--首页-->
+		 <action name="tomain" class="action.user.loginAction">  
+            <result name="tomain" >  
+                /WEB-INF/jsp/main.jsp
+            </result>  
+            
+        </action>
+        <!--登录页-->
+		<action name="tologin" class="action.toLoginAction">  
+            
+        </action>
+        <!--退出功能-->
+         <action name="outLogin" class="action.loginOut">  
+             </action>
+             <action name="upPasswd" class="action.user.updateUserPasswdAction">  
+         <result name="tologin"  type="redirectAction">
+            	tologin
+            </result>
+        </action>
+         <!--机构管理-->
+        <action name="department" class="action.user.departAction">  
+            <result name="department" >  
+                /WEB-INF/jspuser/department.jsp
+            </result>
+            
+        </action>
+         <!--机构新增跳转-->
+        <action name="toadddept" class="action.user.toAddDept">  
+            <result name="toadddept" >  
+                /WEB-INF/jspuser/department_add.jsp
+            </result>  
+        </action>
+        <!--机构新增确认-->
+         <action name="deptDel" class="action.user.delDeptAction">  
+             
+            <result name="todept"  >
+            
+            	 /WEB-INF/jspuser/department.jsp
+            </result> 
+        </action>
+        <!--机构更新-->
+            <action name="deptUp" class="action.user.deptUpAction">  
+        </action>
+        
+             <!--机构删除-->
+           <action name="deptAdd" class="action.user.addDeptAction">  
+           
+        </action>
+             <!--机构查询-->
+           <action name="deptSearch" class="action.user.departAction" method="deptSearch">  
+            <result name="deptSearch"  >
+            
+            	 /WEB-INF/jspuser/department.jsp
+            </result> 
+        </action>
+        
+            <!--角色界面 -->
+           <action name="drole" class="action.user.droleAction">  
+            <result name="drole" >  
+                /WEB-INF/jspuser/d_role.jsp
+            </result>  
+        </action>
+        <action name="toUpRole" class="action.user.toUpDrole">  
+            <result name="toUpRole" >  
+                /WEB-INF/jspuser/d_role_add.jsp
+            </result>  
+        </action>
+         <action name="upDrole" class="action.user.upDroleAction">  
+           
+        </action>
+        
+         <action name="delRole" class="action.user.delRoleAction">  
+           <result name="todrole"  type="redirectAction">
+            	drole
+            </result>
+        </action>
+        
+          <action name="toaddRole" class="action.user.toAddDrole">  
+            <result name="toaddRole" >  
+                /WEB-INF/jspuser/d_role_add.jsp
+            </result>  
+        </action>
+          <action name="addDrole" class="action.user.addDroleAction">  
+          
+          
+        </action>
+        
+            <action name="test" class="action.user.TestAction">  
+          		 <result name="test" >  
+                /WEB-INF/jspuser/test.jsp
+               </result> 
+          
+        </action>
+        <action name="totest" class="action.user.TestAction" method="totest">  
+          		 <result name="totest" >  
+                /WEB-INF/jspuser/test.jsp
+               </result> 
+          
+        </action>
+        
+        <!-- 用户管理-->
+        <action name="user" class="action.user.userAction" >  
+           <result name="user" >  
+                /WEB-INF/jspuser/d_user.jsp
+                
+            </result>  
+         
+        </action>
+        <action name="toadd" class="action.user.userAction"  method="toadd">  
+           <result name="toadd" >  
+                /WEB-INF/jspuser/d_user_add.jsp
+                
+            </result>  
+         
+        </action>
+        <action name="adduser" class="action.user.userAction"  method="add">  
+         
+         
+        </action>
+        <action name="upuser" class="action.user.userAction"  method="up">  
+          
+         
+        </action> 
+        <action name="deluser" class="action.user.userAction"  method="del">  
+          <result name="touser"  type="redirectAction">
+            	user
+            </result>
+         
+        </action>
+        
+          <!-- 计费单价-->
+          <action name="fwml" class="action.js.FwmlAction" >  
+           <result name="fwml" >  
+                /WEB-INF/jspjs/fwml.jsp
+                
+            </result>  
+         
+        </action>
+          <!-- 计费查询-->
+          <action name="xtxxyz" class="action.js.XtxxyzAction" >  
+           <result name="xtxxyz" >  
+                /WEB-INF/jspjs/xtxx_yz.jsp
+                
+            </result>  
+         
+        </action>
+        <action name="dosearchXtxx" class="action.js.XtxxyzAction"  method="dosearchXtxx">  
+           <result name="dosearchXtxx" >  
+                /WEB-INF/jspjs/dosearchxtxx_yz.jsp
+                
+            </result>  
+         
+        </action>
+        
+         <action name="fwsqb" class="action.js.FwsqbAction"  >  
+           <result name="fwsqb" >  
+                /WEB-INF/jspjs/fwsq.jsp
+                
+            </result>  
+         
+        </action>
+         <action name="fwchaxun" class="action.js.FwsqbAction"   method="chaxun">  
+           <result name="fwchaxun" >  
+                /WEB-INF/jspjs/fwsqxx.jsp
+                
+            </result>  
+         
+        </action>
+         
+         <action name="zancun" class="action.js.FwsqbAction"   method="zancun">  
+           
+         
+        </action>
+        
+         <!--代办任务-->
+          <action name="task" class="action.task.taskAction"  >  
+           <result name="task" >  
+                /WEB-INF/jsptask/w_task.jsp
+                
+            </result>  
+         
+        </action>
+        
+          
+         <action name="qianshou" class="action.task.taskAction"   method="qianshou">  
+            <result name="qianshou" >  
+                /WEB-INF/jsptask/w_task.jsp
+                
+            </result>  
+         
+        </action>
+        
+          <action name="taskcha" class="action.task.taskAction"   method="taskcha">  
+            <result name="taskcha" >  
+                /WEB-INF/jsptask/w_task.jsp
+                
+            </result>  
+         
+        </action>
+		</package>
+</struts>

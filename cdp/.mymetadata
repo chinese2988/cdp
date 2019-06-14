@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="cdp"
+  id="myeclipse.1558341994465"
+  context-root="/cdp"
+  j2ee-spec="6.0"
+  archive="cdp.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
